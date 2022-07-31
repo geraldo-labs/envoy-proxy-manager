@@ -1,7 +1,8 @@
+import uuid
 from django.db import models
 
 class Host(models.Model):
-    id = models.UUIDField()
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True)
     name = models.CharField(max_length=255, unique=True)
     url = models.URLField(max_length=255, blank=True, null=True)
     description = models.CharField(default="", null=True, blank=True, max_length=255)
